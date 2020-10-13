@@ -89,4 +89,20 @@ router.delete('/homework/:id', async (req,res)=>{
         })
     }
 })
+
+
+//@Desc Route baru untuk Delete All Database
+router.delete('/homework',async(req,res)=>{
+    const homework = await Homework
+    if(homework && homework!==0){
+        await homework.remove()
+        res.json({
+            message:'homework removed'
+        })
+    } else {
+        res.status(404).json({
+            message:'homework not found'
+        })
+    }
+})
 export default router
