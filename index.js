@@ -4,8 +4,8 @@ dotenv.config()
 import express from 'express'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
-
 import router from './route.js'
+import userRouter from './controllers/UserController.js'
 
 //Connect Database
 
@@ -30,6 +30,7 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/api', router)
+app.use('/api/user', userRouter)
 
 app.listen(process.env.PORT,()=>{
     console.log( `App listen to port ${process.env.PORT}`)
